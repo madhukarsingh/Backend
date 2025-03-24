@@ -28,7 +28,7 @@ export const findPostById = async (id) => {
     }
 }
 
-export const DeletePostById = async (id) {
+export const DeletePostById = async (id) => {
     try {
         const deletedpost = await post.findByIdAndDelete(id);
         return deletedpost ;
