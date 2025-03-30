@@ -1,5 +1,6 @@
 
 /** new post schema  for Imagegram*/
+import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema({
     caption : {
