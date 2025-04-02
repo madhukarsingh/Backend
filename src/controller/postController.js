@@ -14,3 +14,11 @@ export async function createPost(req,res) {
 });
 }
 
+export async function getAllPosts(req,res) {
+    // retunr unimplemented
+    return res.status(501).json({
+        success : false,
+        message : 'Method not implemented'
+    })
+    
+}

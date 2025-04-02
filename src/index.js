@@ -23,15 +23,23 @@ import express from 'express';
 import dbConnect from './config/DbConfig.js';
 
 import cors from 'cors';
-import {createPost} from './controller/postController.js'
-import { s3uploader} from './config/multerConfig.js';
+import postRouter from './router/post.js';
 
+import userRouter from './router/user.js';
+
+//import {createPost} from './controller/postController.js'
+//import { s3uploader} from './config/multerConfig.js';
+
+const PORT = 3000;
 
 const app = express();
 
 app.use(cors());
+app.use('/post',postRouter);
+app.use('/users',userRouter);
 
-const PORT = 3000;
+
+
 
 app.use(express.json()); // middleware to parse json
 app.use(express.text()); // middleware to parse text
@@ -67,7 +75,7 @@ function m2(req,res,next) {
 // CALLIMG controller
 //app.post('/posts',[m1,m2],createPost);  //controller with middleware
 
-app.post('/posts',s3uploader.single('image'), createPost);
+//app.post('/posts',s3uploader.single('image'), createPost); // moved to router
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on ${PORT}`);
