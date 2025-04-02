@@ -23,9 +23,11 @@ import express from 'express';
 import dbConnect from './config/DbConfig.js';
 
 import cors from 'cors';
-import postRouter from './router/post.js';
+//import postRouter from './router/post.js';
 
-import userRouter from './router/user.js';
+//import userRouter from './router/user.js';
+
+import apiRouter from './router/apiRouter.js';
 
 //import {createPost} from './controller/postController.js'
 //import { s3uploader} from './config/multerConfig.js';
@@ -35,8 +37,8 @@ const PORT = 3000;
 const app = express();
 
 app.use(cors());
-app.use('/post',postRouter);
-app.use('/users',userRouter);
+//app.use('/post',postRouter); // good to segreagate paths for small apps
+//app.use('/users',userRouter);
 
 
 
@@ -54,9 +56,6 @@ app.get('/ping',(req,res) => {
     return res.send({message:"Pong"});
 })
 
-app.post('/hello',(req,res) => {
-    return res.send({message:"hello"});
-})
 
 /**
 // express middleware
